@@ -109,6 +109,7 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.83921568629999999" green="0.4431372549" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="prU-LH-JyX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6k9-kz-ysD"/>
                             <constraint firstItem="Euc-Rh-biO" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Apo-33-3Dr"/>
@@ -132,9 +133,17 @@
                             <constraint firstItem="Pqk-5E-EGy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="o8I-jR-AeO"/>
                             <constraint firstItem="prU-LH-JyX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="weD-PM-1wr"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="wVC-cG-D1z" appends="YES" id="bDD-gS-P1t"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="wVC-cG-D1z">
+                    <connections>
+                        <action selector="endEditing:" destination="BYZ-38-t0r" id="5lq-9e-cCc"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="305" y="377"/>
         </scene>
