@@ -14,6 +14,10 @@
 		740F9C0F1BFC826700C4AF7D /* OnTheMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740F9C0E1BFC826700C4AF7D /* OnTheMapTests.swift */; };
 		740F9C1A1BFC826700C4AF7D /* OnTheMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740F9C191BFC826700C4AF7D /* OnTheMapUITests.swift */; };
 		740F9C2B1BFC82C400C4AF7D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740F9C2A1BFC82C400C4AF7D /* LoginViewController.swift */; };
+		C4DC10511BFCF693002128A7 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4DC104E1BFCF693002128A7 /* Roboto-Medium.ttf */; };
+		C4DC10521BFCF693002128A7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4DC104F1BFCF693002128A7 /* Roboto-Regular.ttf */; };
+		C4DC10531BFCF693002128A7 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4DC10501BFCF693002128A7 /* Roboto-Thin.ttf */; };
+		C4DC10571BFCFC6F002128A7 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DC10561BFCFC6F002128A7 /* PaddingTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		740F9C191BFC826700C4AF7D /* OnTheMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheMapUITests.swift; sourceTree = "<group>"; };
 		740F9C1B1BFC826700C4AF7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		740F9C2A1BFC82C400C4AF7D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C4DC104E1BFCF693002128A7 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		C4DC104F1BFCF693002128A7 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		C4DC10501BFCF693002128A7 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		C4DC10561BFCFC6F002128A7 /* PaddingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +146,7 @@
 		740F9C281BFC82B800C4AF7D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C4DC10561BFCFC6F002128A7 /* PaddingTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -153,6 +162,9 @@
 		740F9C2C1BFC835E00C4AF7D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C4DC104E1BFCF693002128A7 /* Roboto-Medium.ttf */,
+				C4DC104F1BFCF693002128A7 /* Roboto-Regular.ttf */,
+				C4DC10501BFCF693002128A7 /* Roboto-Thin.ttf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -261,7 +273,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4DC10511BFCF693002128A7 /* Roboto-Medium.ttf in Resources */,
 				740F9C041BFC826700C4AF7D /* LaunchScreen.storyboard in Resources */,
+				C4DC10531BFCF693002128A7 /* Roboto-Thin.ttf in Resources */,
+				C4DC10521BFCF693002128A7 /* Roboto-Regular.ttf in Resources */,
 				740F9C011BFC826700C4AF7D /* Assets.xcassets in Resources */,
 				740F9BFF1BFC826700C4AF7D /* Main.storyboard in Resources */,
 			);
@@ -289,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				740F9C2B1BFC82C400C4AF7D /* LoginViewController.swift in Sources */,
+				C4DC10571BFCFC6F002128A7 /* PaddingTextField.swift in Sources */,
 				740F9BFA1BFC826700C4AF7D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +532,7 @@
 				740F9C201BFC826700C4AF7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		740F9C211BFC826700C4AF7D /* Build configuration list for PBXNativeTarget "OnTheMapTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +541,7 @@
 				740F9C231BFC826700C4AF7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		740F9C241BFC826700C4AF7D /* Build configuration list for PBXNativeTarget "OnTheMapUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +550,7 @@
 				740F9C261BFC826700C4AF7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
