@@ -13,11 +13,11 @@
 		740F9C041BFC826700C4AF7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 740F9C021BFC826700C4AF7D /* LaunchScreen.storyboard */; };
 		740F9C0F1BFC826700C4AF7D /* OnTheMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740F9C0E1BFC826700C4AF7D /* OnTheMapTests.swift */; };
 		740F9C1A1BFC826700C4AF7D /* OnTheMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740F9C191BFC826700C4AF7D /* OnTheMapUITests.swift */; };
-		740F9C2B1BFC82C400C4AF7D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740F9C2A1BFC82C400C4AF7D /* LoginViewController.swift */; };
+		7472DD441BFDCF45000B2D15 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7472DD411BFDCF45000B2D15 /* LoginViewController.swift */; };
+		7472DD451BFDCF45000B2D15 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7472DD431BFDCF45000B2D15 /* PaddingTextField.swift */; };
 		C4DC10511BFCF693002128A7 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4DC104E1BFCF693002128A7 /* Roboto-Medium.ttf */; };
 		C4DC10521BFCF693002128A7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4DC104F1BFCF693002128A7 /* Roboto-Regular.ttf */; };
 		C4DC10531BFCF693002128A7 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4DC10501BFCF693002128A7 /* Roboto-Thin.ttf */; };
-		C4DC10571BFCFC6F002128A7 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DC10561BFCFC6F002128A7 /* PaddingTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,11 +50,11 @@
 		740F9C151BFC826700C4AF7D /* OnTheMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnTheMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		740F9C191BFC826700C4AF7D /* OnTheMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheMapUITests.swift; sourceTree = "<group>"; };
 		740F9C1B1BFC826700C4AF7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		740F9C2A1BFC82C400C4AF7D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7472DD411BFDCF45000B2D15 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7472DD431BFDCF45000B2D15 /* PaddingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		C4DC104E1BFCF693002128A7 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		C4DC104F1BFCF693002128A7 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		C4DC10501BFCF693002128A7 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
-		C4DC10561BFCFC6F002128A7 /* PaddingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,10 +105,11 @@
 		740F9BF81BFC826700C4AF7D /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				7472DD3E1BFDCF45000B2D15 /* Models */,
+				7472DD3F1BFDCF45000B2D15 /* Tools */,
+				7472DD401BFDCF45000B2D15 /* ViewControllers */,
+				7472DD421BFDCF45000B2D15 /* Views */,
 				740F9C2C1BFC835E00C4AF7D /* Resources */,
-				740F9C271BFC82B800C4AF7D /* Model */,
-				740F9C281BFC82B800C4AF7D /* View */,
-				740F9C291BFC82B800C4AF7D /* ViewController */,
 				740F9BF91BFC826700C4AF7D /* AppDelegate.swift */,
 				740F9BFD1BFC826700C4AF7D /* Main.storyboard */,
 				740F9C001BFC826700C4AF7D /* Assets.xcassets */,
@@ -136,29 +137,6 @@
 			path = OnTheMapUITests;
 			sourceTree = "<group>";
 		};
-		740F9C271BFC82B800C4AF7D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		740F9C281BFC82B800C4AF7D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C4DC10561BFCFC6F002128A7 /* PaddingTextField.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		740F9C291BFC82B800C4AF7D /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				740F9C2A1BFC82C400C4AF7D /* LoginViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
 		740F9C2C1BFC835E00C4AF7D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +145,36 @@
 				C4DC10501BFCF693002128A7 /* Roboto-Thin.ttf */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		7472DD3E1BFDCF45000B2D15 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7472DD3F1BFDCF45000B2D15 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		7472DD401BFDCF45000B2D15 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7472DD411BFDCF45000B2D15 /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		7472DD421BFDCF45000B2D15 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7472DD431BFDCF45000B2D15 /* PaddingTextField.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,8 +311,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				740F9C2B1BFC82C400C4AF7D /* LoginViewController.swift in Sources */,
-				C4DC10571BFCFC6F002128A7 /* PaddingTextField.swift in Sources */,
+				7472DD441BFDCF45000B2D15 /* LoginViewController.swift in Sources */,
+				7472DD451BFDCF45000B2D15 /* PaddingTextField.swift in Sources */,
 				740F9BFA1BFC826700C4AF7D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
