@@ -150,7 +150,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="7dh-Va-Oah" id="RAf-na-gBg"/>
                         <outlet property="passwordTextField" destination="prU-LH-JyX" id="j8M-pp-E2k"/>
-                        <segue destination="ft2-by-W1l" kind="presentation" identifier="loginSegue" id="BWS-4e-IRa"/>
+                        <segue destination="EjM-mL-78A" kind="presentation" identifier="loginSegue" id="Net-Cu-sqe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -160,12 +160,13 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="305" y="377"/>
+            <point key="canvasLocation" x="-527" y="385"/>
         </scene>
         <!--List-->
         <scene sceneID="eqN-iM-rRR">
             <objects>
-                <viewController id="A3r-uC-VMM" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gjx-S1-gsX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="A3r-uC-VMM" customClass="ListViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zbi-aH-t3g"/>
                         <viewControllerLayoutGuide type="bottom" id="5Ev-bd-B8Z"/>
@@ -178,14 +179,31 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="List" image="list" id="stT-19-fXg"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gjx-S1-gsX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1881" y="705"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VGa-9E-QGL">
+            <objects>
+                <navigationController id="EjM-mL-78A" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bjh-iD-is8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ft2-by-W1l" kind="relationship" relationship="rootViewController" id="FUm-90-qCw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g09-dU-x7s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="289" y="380"/>
         </scene>
         <!--Map-->
         <scene sceneID="JFe-ZM-5tL">
             <objects>
-                <viewController id="Xx2-3N-wYm" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AdQ-04-sTv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="Xx2-3N-wYm" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ueq-Ye-Csj"/>
                         <viewControllerLayoutGuide type="bottom" id="pa5-3i-iAL"/>
@@ -198,14 +216,16 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" id="X1r-u4-4Tf"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AdQ-04-sTv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1880" y="43"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Pin Tab Bar Controller-->
         <scene sceneID="kTF-a7-1ut">
             <objects>
-                <tabBarController id="ft2-by-W1l" sceneMemberID="viewController">
+                <tabBarController id="ft2-by-W1l" customClass="PinTabBarController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2Hq-Wm-GC8">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="9bY-Py-YhY"/>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="a3d-kh-4Ir">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
