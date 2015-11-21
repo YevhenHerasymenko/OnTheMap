@@ -8,12 +8,11 @@
 
 import UIKit
 import SafariServices
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    //MARK: - Actions
 
     @IBAction func endEditing(sender: UITapGestureRecognizer) {
         view.endEditing(true)
@@ -23,11 +22,27 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginWithFacebook(sender: UIButton) {
-        
+        let login: FBSDKLoginManager = FBSDKLoginManager()
+        login.logInWithReadPermissions(["public_profile"], fromViewController: self) { (result, error) -> Void in
+            if (error != nil) {
+                
+                print(error.description)
+            } else if result.isCancelled {
+                print("Was cancelled")
+            } else {
+                SessionRequestManager.sharedInstance.login(result.token.tokenString)
+            }
+        }
     }
     
     @IBAction func signUp(sender: UIButton) {
         let safariVC = SFSafariViewController(URL: NSURL(string: "https://udacity.com/account/auth#!/signup")!)
         self.presentViewController(safariVC, animated: true, completion: nil)
+    }
+    
+    //MARK: - Alert
+    
+    func showAlert(title: String) {
+        
     }
 }
