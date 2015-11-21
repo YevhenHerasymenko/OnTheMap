@@ -11,6 +11,7 @@ import Foundation
 
 struct SegueConstants {
     static let loginSegue: String = "loginSegue"
+    static let setLocationSegue: String = "setLocationSegue"
 }
 
 struct UrlConstants {

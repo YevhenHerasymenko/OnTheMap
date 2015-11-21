@@ -23,8 +23,9 @@ class PinTabBarController: UITabBarController {
     }
 
     @IBAction func pinPosition(sender: UIBarButtonItem) {
-        
+        performSegueWithIdentifier(SegueConstants.setLocationSegue, sender: self)
     }
+    
     @IBAction func refreshPins(sender: UIBarButtonItem) {
     }
 }
