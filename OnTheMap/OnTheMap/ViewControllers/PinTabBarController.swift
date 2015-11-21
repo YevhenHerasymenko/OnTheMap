@@ -12,9 +12,17 @@ class PinTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    //MARK: - Actions
 
-        // Do any additional setup after loading the view.
+    @IBAction func logout(sender: UIBarButtonItem) {
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
 
-
+    @IBAction func pinPosition(sender: UIBarButtonItem) {
+        print("Fack")
+    }
+    @IBAction func refreshPins(sender: UIBarButtonItem) {
+    }
 }
