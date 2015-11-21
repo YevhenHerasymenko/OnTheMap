@@ -17,7 +17,7 @@
 		7472DD451BFDCF45000B2D15 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7472DD431BFDCF45000B2D15 /* PaddingTextField.swift */; };
 		C4C64D961C007426000D9D54 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C64D951C007426000D9D54 /* FBSDKCoreKit.framework */; };
 		C4C64D981C007674000D9D54 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C64D971C007674000D9D54 /* FBSDKLoginKit.framework */; };
-		C4C64D9A1C007A0B000D9D54 /* SessionRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C64D991C007A0B000D9D54 /* SessionRequestManager.swift */; };
+		C4C64D9A1C007A0B000D9D54 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C64D991C007A0B000D9D54 /* SessionManager.swift */; };
 		C4DC10511BFCF693002128A7 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4DC104E1BFCF693002128A7 /* Roboto-Medium.ttf */; };
 		C4DC10521BFCF693002128A7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4DC104F1BFCF693002128A7 /* Roboto-Regular.ttf */; };
 		C4DC10531BFCF693002128A7 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4DC10501BFCF693002128A7 /* Roboto-Thin.ttf */; };
@@ -57,7 +57,7 @@
 		7472DD431BFDCF45000B2D15 /* PaddingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		C4C64D951C007426000D9D54 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = OnTheMap/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		C4C64D971C007674000D9D54 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = OnTheMap/FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		C4C64D991C007A0B000D9D54 /* SessionRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionRequestManager.swift; sourceTree = "<group>"; };
+		C4C64D991C007A0B000D9D54 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		C4DC104E1BFCF693002128A7 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		C4DC104F1BFCF693002128A7 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		C4DC10501BFCF693002128A7 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		7472DD3F1BFDCF45000B2D15 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				C4C64D991C007A0B000D9D54 /* SessionRequestManager.swift */,
+				C4C64D991C007A0B000D9D54 /* SessionManager.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -332,7 +332,7 @@
 			files = (
 				7472DD441BFDCF45000B2D15 /* LoginViewController.swift in Sources */,
 				7472DD451BFDCF45000B2D15 /* PaddingTextField.swift in Sources */,
-				C4C64D9A1C007A0B000D9D54 /* SessionRequestManager.swift in Sources */,
+				C4C64D9A1C007A0B000D9D54 /* SessionManager.swift in Sources */,
 				740F9BFA1BFC826700C4AF7D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

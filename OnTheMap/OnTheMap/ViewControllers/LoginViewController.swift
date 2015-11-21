@@ -12,25 +12,30 @@ import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     //MARK: - Actions
 
     @IBAction func endEditing(sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     @IBAction func login(sender: UIButton) {
-        
+        if emailTextField.text?.characters.count == 0 || passwordTextField.text?.characters.count == 0 {
+            showAlert("Email or password cannot be nil")
+        } else {
+            SessionManager.sharedInstance.login(emailTextField.text!, password: passwordTextField.text!)
+        }
     }
     
     @IBAction func loginWithFacebook(sender: UIButton) {
         let login: FBSDKLoginManager = FBSDKLoginManager()
         login.logInWithReadPermissions(["public_profile"], fromViewController: self) { (result, error) -> Void in
             if (error != nil) {
-                
-                print(error.description)
+                self.showAlert(error.description)
             } else if result.isCancelled {
                 print("Was cancelled")
             } else {
-                SessionRequestManager.sharedInstance.login(result.token.tokenString)
+                SessionManager.sharedInstance.login(result.token.tokenString)
             }
         }
     }
@@ -43,6 +48,9 @@ class LoginViewController: UIViewController {
     //MARK: - Alert
     
     func showAlert(title: String) {
-        
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        let alertOkAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+        alertController.addAction(alertOkAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }

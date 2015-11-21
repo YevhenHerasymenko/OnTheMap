@@ -147,6 +147,10 @@
                             <outletCollection property="gestureRecognizers" destination="wVC-cG-D1z" appends="YES" id="bDD-gS-P1t"/>
                         </connections>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="7dh-Va-Oah" id="RAf-na-gBg"/>
+                        <outlet property="passwordTextField" destination="prU-LH-JyX" id="j8M-pp-E2k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="wVC-cG-D1z">
