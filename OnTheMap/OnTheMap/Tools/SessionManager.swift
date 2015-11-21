@@ -10,11 +10,14 @@ import UIKit
 
 typealias loginServerResult = (String) -> ()
 
-class SessionManager: NSObject {
+class SessionManager {
     
     static let sharedInstance = SessionManager()
     
     var sessionToken: String!
+    var userId: String!
+    
+    //MARK: - Login
     
     func login(email: String, password: String, result: loginServerResult) {
         loginRequest(loginHttpBody(email, password: password), result: result)
@@ -25,7 +28,7 @@ class SessionManager: NSObject {
     }
     
     func loginRequest(httpBody: String, result: loginServerResult) {
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: UrlConstants.sessionUrl)!)
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -41,6 +44,7 @@ class SessionManager: NSObject {
             do {
                 let responseDictionary = try NSJSONSerialization.JSONObjectWithData(newData, options: []) as! NSDictionary
                 self.sessionToken = responseDictionary["session"]!["id"]! as! String
+                self.userId = responseDictionary["account"]!["key"]! as! String
                 result("")
             } catch let error as NSError {
                 result(error.description)
@@ -49,11 +53,37 @@ class SessionManager: NSObject {
         task.resume()
     }
     
+    //MARK: Login Body
+    
     func loginHttpBody(email: String, password: String) -> String {
         return "{\"udacity\": {\"username\": \"\(email)\", \"password\": \"\(password)\"}}"
     }
     
     func loginHttpBody(facebookToken: String) -> String {
         return "{\"facebook_mobile\": {\"access_token\": \"\(facebookToken)\"}}"
+    }
+    
+    //MARK: - Logout
+    
+    func logout() {
+        let request = NSMutableURLRequest(URL: NSURL(string: UrlConstants.sessionUrl)!)
+        request.HTTPMethod = "DELETE"
+        var xsrfCookie: NSHTTPCookie? = nil
+        let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        for cookie in sharedCookieStorage.cookies! as [NSHTTPCookie] {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            if error != nil { // Handle error…
+                return
+            }
+            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
+            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+        }
+        task.resume()
     }
 }

@@ -17,11 +17,12 @@ class PinTabBarController: UITabBarController {
     //MARK: - Actions
 
     @IBAction func logout(sender: UIBarButtonItem) {
+        SessionManager.sharedInstance.logout()
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
 
     @IBAction func pinPosition(sender: UIBarButtonItem) {
-        print("Fack")
+        
     }
     @IBAction func refreshPins(sender: UIBarButtonItem) {
     }

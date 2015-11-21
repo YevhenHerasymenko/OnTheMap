@@ -12,3 +12,7 @@ import Foundation
 struct SegueConstants {
     static let loginSegue: String = "loginSegue"
 }
+
+struct UrlConstants {
+    static let sessionUrl: String = "https://www.udacity.com/api/session"
+}
