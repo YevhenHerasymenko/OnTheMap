@@ -14,5 +14,8 @@ struct SegueConstants {
 }
 
 struct UrlConstants {
+    //Udacity
     static let sessionUrl: String = "https://www.udacity.com/api/session"
+    static let usersUrl: String = "https://www.udacity.com/api/users/"
+    //Parse
 }

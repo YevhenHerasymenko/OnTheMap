@@ -12,6 +12,7 @@ class PinTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        ParseManager.sharedInstance.loadStudentLocations()
     }
     
     //MARK: - Actions

@@ -46,6 +46,7 @@ class SessionManager {
                 self.sessionToken = responseDictionary["session"]!["id"]! as! String
                 self.userId = responseDictionary["account"]!["key"]! as! String
                 result("")
+                self.getUserDataRequest()
             } catch let error as NSError {
                 result(error.description)
             }
@@ -61,6 +62,21 @@ class SessionManager {
     
     func loginHttpBody(facebookToken: String) -> String {
         return "{\"facebook_mobile\": {\"access_token\": \"\(facebookToken)\"}}"
+    }
+    
+    //MARK: - User Data
+    
+    func getUserDataRequest() {
+        let request = NSMutableURLRequest(URL: NSURL(string: UrlConstants.usersUrl + userId)!)
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            if error != nil { // Handle error...
+                return
+            }
+            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
+            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+        }
+        task.resume()
     }
     
     //MARK: - Logout
