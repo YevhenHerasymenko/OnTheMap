@@ -23,7 +23,9 @@ class LoginViewController: UIViewController {
         if emailTextField.text?.characters.count == 0 || passwordTextField.text?.characters.count == 0 {
             showAlert("Email or password cannot be nil")
         } else {
-            SessionManager.sharedInstance.login(emailTextField.text!, password: passwordTextField.text!)
+            SessionManager.sharedInstance.login(emailTextField.text!, password: passwordTextField.text!, result: { (error) -> () in
+                self.loginNavigation(error)
+            })
         }
     }
     
@@ -35,7 +37,9 @@ class LoginViewController: UIViewController {
             } else if result.isCancelled {
                 print("Was cancelled")
             } else {
-                SessionManager.sharedInstance.login(result.token.tokenString)
+                SessionManager.sharedInstance.login(result.token.tokenString, result: { (errorRequest) -> () in
+                    self.loginNavigation(errorRequest)
+                })
             }
         }
     }
@@ -43,6 +47,16 @@ class LoginViewController: UIViewController {
     @IBAction func signUp(sender: UIButton) {
         let safariVC = SFSafariViewController(URL: NSURL(string: "https://udacity.com/account/auth#!/signup")!)
         self.presentViewController(safariVC, animated: true, completion: nil)
+    }
+    
+    //MARK: - Navigation
+    
+    func loginNavigation(error: String!) {
+        if (error.characters.count != 0) {
+            showAlert(error)
+        } else {
+            performSegueWithIdentifier(SegueConstants.loginSegue, sender: self)
+        }
     }
     
     //MARK: - Alert

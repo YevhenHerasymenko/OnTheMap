@@ -18,6 +18,7 @@
 		C4C64D961C007426000D9D54 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C64D951C007426000D9D54 /* FBSDKCoreKit.framework */; };
 		C4C64D981C007674000D9D54 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C64D971C007674000D9D54 /* FBSDKLoginKit.framework */; };
 		C4C64D9A1C007A0B000D9D54 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C64D991C007A0B000D9D54 /* SessionManager.swift */; };
+		C4C64D9C1C008AA9000D9D54 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C64D9B1C008AA9000D9D54 /* Constants.swift */; };
 		C4DC10511BFCF693002128A7 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4DC104E1BFCF693002128A7 /* Roboto-Medium.ttf */; };
 		C4DC10521BFCF693002128A7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4DC104F1BFCF693002128A7 /* Roboto-Regular.ttf */; };
 		C4DC10531BFCF693002128A7 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4DC10501BFCF693002128A7 /* Roboto-Thin.ttf */; };
@@ -58,6 +59,7 @@
 		C4C64D951C007426000D9D54 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = OnTheMap/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		C4C64D971C007674000D9D54 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = OnTheMap/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		C4C64D991C007A0B000D9D54 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		C4C64D9B1C008AA9000D9D54 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C4DC104E1BFCF693002128A7 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		C4DC104F1BFCF693002128A7 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		C4DC10501BFCF693002128A7 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				C4DC104E1BFCF693002128A7 /* Roboto-Medium.ttf */,
 				C4DC104F1BFCF693002128A7 /* Roboto-Regular.ttf */,
 				C4DC10501BFCF693002128A7 /* Roboto-Thin.ttf */,
+				C4C64D9B1C008AA9000D9D54 /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4C64D9C1C008AA9000D9D54 /* Constants.swift in Sources */,
 				7472DD441BFDCF45000B2D15 /* LoginViewController.swift in Sources */,
 				7472DD451BFDCF45000B2D15 /* PaddingTextField.swift in Sources */,
 				C4C64D9A1C007A0B000D9D54 /* SessionManager.swift in Sources */,

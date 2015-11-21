@@ -8,18 +8,23 @@
 
 import UIKit
 
+typealias loginServerResult = (String) -> ()
+
 class SessionManager: NSObject {
+    
     static let sharedInstance = SessionManager()
     
-    func login(email: String, password: String) {
-        loginRequest(loginHttpBody(email, password: password))
+    var sessionToken: String!
+    
+    func login(email: String, password: String, result: loginServerResult) {
+        loginRequest(loginHttpBody(email, password: password), result: result)
     }
     
-    func login(facebookToken: String) {
-        loginRequest(loginHttpBody(facebookToken))
+    func login(facebookToken: String, result: loginServerResult) {
+        loginRequest(loginHttpBody(facebookToken), result:  result)
     }
     
-    func loginRequest(httpBody: String) {
+    func loginRequest(httpBody: String, result: loginServerResult) {
         let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -28,11 +33,18 @@ class SessionManager: NSObject {
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
             if error != nil {
-                // Handle error...
+                result(error!.description)
                 return
             }
-            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
-            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
+            
+            do {
+                let responseDictionary = try NSJSONSerialization.JSONObjectWithData(newData, options: []) as! NSDictionary
+                self.sessionToken = responseDictionary["session"]!["id"]! as! String
+                result("")
+            } catch let error as NSError {
+                result(error.description)
+            }
         }
         task.resume()
     }
