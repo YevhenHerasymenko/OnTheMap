@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 import FBSDKLoginKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -72,5 +72,16 @@ class LoginViewController: UIViewController {
         let alertOkAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
         alertController.addAction(alertOkAction)
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    //MARK: - Text Field Delegate
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
     }
 }

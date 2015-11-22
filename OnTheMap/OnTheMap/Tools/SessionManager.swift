@@ -43,12 +43,15 @@ class SessionManager {
             
             do {
                 let responseDictionary = try NSJSONSerialization.JSONObjectWithData(newData, options: []) as! NSDictionary
-                if let sessionToken = responseDictionary["session"]!["id"] {
-                    self.sessionToken = sessionToken as! String
+                if let sessionInfo = responseDictionary["session"] {
+                    self.sessionToken = sessionInfo["id"] as! String
                     self.userId = responseDictionary["account"]!["key"]! as! String
+                    result("")
+                    self.getUserDataRequest()
+                } else if let error = responseDictionary["error"] {
+                    result(error as! String)
                 }
-                result("")
-                self.getUserDataRequest()
+
             } catch let error as NSError {
                 result(error.description)
             }
