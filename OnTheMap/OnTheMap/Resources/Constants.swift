@@ -10,14 +10,28 @@ import Foundation
 
 
 struct SegueConstants {
-    static let loginSegue: String = "loginSegue"
-    static let setLocationSegue: String = "setLocationSegue"
-    static let setMyUrlSegue: String = "setMyUrlSegue"
+    static let loginSegue = "loginSegue"
+    static let setLocationSegue = "setLocationSegue"
+    static let setMyUrlSegue = "setMyUrlSegue"
 }
 
 struct UrlConstants {
     //Udacity
-    static let sessionUrl: String = "https://www.udacity.com/api/session"
-    static let usersUrl: String = "https://www.udacity.com/api/users/"
+    static let sessionUrl = "https://www.udacity.com/api/session"
+    static let usersUrl = "https://www.udacity.com/api/users/"
     //Parse
+    static let studentLocation = "https://api.parse.com/1/classes/StudentLocation"
+}
+
+struct UserKeys {
+    static let firstName = "firstName"
+    static let mediaURL = "mediaURL"
+    static let longitude = "longitude"
+    static let uniqueKey = "uniqueKey"
+    static let latitude = "latitude"
+    static let objectId = "objectId"
+    static let createdAt = "createdAt"
+    static let updatedAt = "updatedAt"
+    static let mapString = "mapString"
+    static let lastName = "lastName"
 }

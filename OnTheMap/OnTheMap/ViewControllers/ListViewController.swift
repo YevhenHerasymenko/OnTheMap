@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, TabBarPinProtocol {
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -16,6 +16,14 @@ class ListViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    //MARK: - TabBar
+    
+    func update() {
+        if tableView != nil {
+            tableView.reloadData()
+        }
     }
 
 }

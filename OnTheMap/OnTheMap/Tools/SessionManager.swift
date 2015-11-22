@@ -74,7 +74,12 @@ class SessionManager {
                 return
             }
             let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
-            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+            
+            do {
+                let responseDictionary = try NSJSONSerialization.JSONObjectWithData(newData, options: []) as! NSDictionary
+                print(responseDictionary)
+                
+            } catch _ as NSError { }
         }
         task.resume()
     }

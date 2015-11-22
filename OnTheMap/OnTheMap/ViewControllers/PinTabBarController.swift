@@ -8,11 +8,29 @@
 
 import UIKit
 
+protocol TabBarPinProtocol {
+    func update()
+}
+
 class PinTabBarController: UITabBarController {
+    
+    var users: Array<User>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ParseManager.sharedInstance.loadStudentLocations()
+        loadUsersData()
+    }
+    
+    func loadUsersData() {
+        ParseManager.sharedInstance.loadStudentLocations { (users) -> () in
+            self.users = users
+            
+            for viewController in self.viewControllers! {
+                if let protocolObject: TabBarPinProtocol! = viewController as! TabBarPinProtocol {
+                    protocolObject.update()
+                }
+            }
+        }
     }
     
     //MARK: - Actions
@@ -27,5 +45,6 @@ class PinTabBarController: UITabBarController {
     }
     
     @IBAction func refreshPins(sender: UIBarButtonItem) {
+        loadUsersData()
     }
 }
