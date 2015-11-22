@@ -18,8 +18,10 @@
             <string>Roboto-Medium</string>
             <string>Roboto-Medium</string>
             <string>Roboto-Medium</string>
+            <string>Roboto-Medium</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
         </mutableArray>
@@ -465,7 +467,7 @@
                     <navigationItem key="navigationItem" id="kBc-ux-yn1"/>
                     <connections>
                         <outlet property="findButton" destination="2X7-8N-D62" id="Vyp-AY-h14"/>
-                        <segue destination="MgE-sb-ZZL" kind="presentation" identifier="setMyUrlSegue" animates="NO" id="Bvz-Gx-rZO"/>
+                        <segue destination="MgE-sb-ZZL" kind="show" identifier="setMyUrlSegue" animates="NO" id="Bvz-Gx-rZO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HhE-Az-XbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -502,27 +504,91 @@
                                             <action selector="cancel:" destination="Ohl-ua-0E0" eventType="touchUpInside" id="MTo-Xk-AHi"/>
                                         </connections>
                                     </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter a Link to Share Here" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="h0y-vc-F6T">
+                                        <rect key="frame" x="20" y="62" width="560" height="108"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="22"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.27450980390000002" green="0.43529411759999997" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="h0y-vc-F6T" secondAttribute="trailing" constant="20" id="57J-8u-eVo"/>
+                                    <constraint firstItem="h0y-vc-F6T" firstAttribute="leading" secondItem="JzP-tm-01z" secondAttribute="leading" constant="20" id="KqY-YT-aFo"/>
+                                    <constraint firstItem="h0y-vc-F6T" firstAttribute="top" secondItem="8TC-pA-WDb" secondAttribute="bottom" constant="10" id="Nzt-Il-NxM"/>
+                                    <constraint firstAttribute="bottom" secondItem="h0y-vc-F6T" secondAttribute="bottom" constant="10" id="bTe-zM-ypw"/>
                                     <constraint firstAttribute="trailing" secondItem="8TC-pA-WDb" secondAttribute="trailing" constant="20" id="fPx-Xm-VXl"/>
                                     <constraint firstItem="8TC-pA-WDb" firstAttribute="top" secondItem="JzP-tm-01z" secondAttribute="top" constant="20" id="rb8-r0-azR"/>
+                                </constraints>
+                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9P-hm-Jdd">
+                                <rect key="frame" x="0.0" y="180" width="600" height="420"/>
+                                <animations/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Pqm-mZ-0GA" appends="YES" id="uQQ-xM-cIs"/>
+                                </connections>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibD-fr-AbI">
+                                <rect key="frame" x="0.0" y="480" width="600" height="120"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jF9-oZ-Bsm">
+                                        <rect key="frame" x="120" y="40" width="360" height="40"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="xQ4-Oa-Uih"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                        <state key="normal" title="Submit">
+                                            <color key="titleColor" red="0.27450980390000002" green="0.43529411759999997" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="findOnMap:" destination="Ohl-ua-0E0" eventType="touchUpInside" id="I5r-xC-nVL"/>
+                                            <action selector="submit:" destination="MgE-sb-ZZL" eventType="touchUpInside" id="k6v-DZ-qsH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="0.1999313766891892" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="jF9-oZ-Bsm" firstAttribute="centerY" secondItem="ibD-fr-AbI" secondAttribute="centerY" id="Dcb-AI-C1w"/>
+                                    <constraint firstAttribute="trailing" secondItem="jF9-oZ-Bsm" secondAttribute="trailing" constant="120" id="RIG-9z-xri"/>
+                                    <constraint firstItem="jF9-oZ-Bsm" firstAttribute="leading" secondItem="ibD-fr-AbI" secondAttribute="leading" constant="120" id="keC-7Y-ODJ"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ibD-fr-AbI" firstAttribute="height" secondItem="ITy-J1-UtD" secondAttribute="height" multiplier="0.2" id="3b7-px-d1v"/>
+                            <constraint firstAttribute="trailing" secondItem="ibD-fr-AbI" secondAttribute="trailing" id="9I9-tb-XQ8"/>
+                            <constraint firstItem="ibD-fr-AbI" firstAttribute="leading" secondItem="ITy-J1-UtD" secondAttribute="leading" id="9gn-dV-lye"/>
+                            <constraint firstItem="z9P-hm-Jdd" firstAttribute="top" secondItem="JzP-tm-01z" secondAttribute="bottom" id="9uG-g7-GbG"/>
                             <constraint firstItem="JzP-tm-01z" firstAttribute="height" secondItem="ITy-J1-UtD" secondAttribute="height" multiplier="0.3" id="EBi-Nc-89f"/>
+                            <constraint firstItem="z9P-hm-Jdd" firstAttribute="leading" secondItem="ITy-J1-UtD" secondAttribute="leading" id="GE9-5h-bor"/>
                             <constraint firstAttribute="trailing" secondItem="JzP-tm-01z" secondAttribute="trailing" id="Qlo-0Z-eKT"/>
                             <constraint firstItem="JzP-tm-01z" firstAttribute="leading" secondItem="ITy-J1-UtD" secondAttribute="leading" id="XBl-8B-feR"/>
                             <constraint firstItem="JzP-tm-01z" firstAttribute="top" secondItem="ITy-J1-UtD" secondAttribute="top" id="Y8e-TX-whe"/>
+                            <constraint firstItem="bSS-c9-8wR" firstAttribute="top" secondItem="z9P-hm-Jdd" secondAttribute="bottom" id="YN3-Sw-qcf"/>
+                            <constraint firstItem="bSS-c9-8wR" firstAttribute="top" secondItem="ibD-fr-AbI" secondAttribute="bottom" id="dbK-28-C4H"/>
+                            <constraint firstAttribute="trailing" secondItem="z9P-hm-Jdd" secondAttribute="trailing" id="hz6-ZL-4yh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="z9P-hm-Jdd" id="S6E-G6-KnY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epm-nE-GEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Pqm-mZ-0GA">
+                    <connections>
+                        <action selector="endEdit:" destination="MgE-sb-ZZL" id="BiH-kc-RWV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2658" y="1526"/>
         </scene>

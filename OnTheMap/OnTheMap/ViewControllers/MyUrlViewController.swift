@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import MapKit
 
-class MyUrlViewController: UIViewController {
+class MyUrlViewController: UIViewController, UITextViewDelegate {
 
+    @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,4 +25,12 @@ class MyUrlViewController: UIViewController {
         navigationController!.dismissViewControllerAnimated(true, completion: nil)
     }
 
+    @IBAction func submit(sender: UIButton) {
+        navigationController!.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func endEdit(sender: AnyObject) {
+        view.endEditing(true)
+    }
+    
 }
