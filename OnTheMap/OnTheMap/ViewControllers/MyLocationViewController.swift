@@ -25,9 +25,12 @@ class MyLocationViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func findOnMap(sender: UIButton) {
-        
+        self.performSegueWithIdentifier("setMyUrlSegue", sender: self)
     }
     
+    @IBAction func endEdit(sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
     //MARK: - Text View Delegate
     
     func textViewDidBeginEditing(textView: UITextView) {
@@ -42,6 +45,13 @@ class MyLocationViewController: UIViewController, UITextViewDelegate {
         if textView.text.characters.count == 0 {
             textView.text = StringConstant.locationHere
         }
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.canResignFirstResponder()
+        }
+        return true
     }
     
 }

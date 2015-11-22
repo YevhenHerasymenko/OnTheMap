@@ -17,6 +17,7 @@
             <string>Roboto-Medium</string>
             <string>Roboto-Medium</string>
             <string>Roboto-Medium</string>
+            <string>Roboto-Medium</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
@@ -371,6 +372,7 @@
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="o4v-Ie-vVs" firstAttribute="centerX" secondItem="GKt-Nn-LzO" secondAttribute="centerX" id="0yX-Tn-HdM"/>
                                     <constraint firstItem="C6U-cO-8lg" firstAttribute="top" secondItem="s2Q-dF-c1R" secondAttribute="bottom" id="7gt-s4-qx9"/>
@@ -381,6 +383,9 @@
                                     <constraint firstItem="C6U-cO-8lg" firstAttribute="centerX" secondItem="GKt-Nn-LzO" secondAttribute="centerX" id="rRB-tF-jsi"/>
                                     <constraint firstItem="o4v-Ie-vVs" firstAttribute="top" secondItem="C6U-cO-8lg" secondAttribute="bottom" id="ufC-1n-tSf"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="hbw-vI-K5X" appends="YES" id="53q-pF-hm1"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0k-a0-ebV">
                                 <rect key="frame" x="0.0" y="480" width="600" height="120"/>
@@ -460,17 +465,22 @@
                     <navigationItem key="navigationItem" id="kBc-ux-yn1"/>
                     <connections>
                         <outlet property="findButton" destination="2X7-8N-D62" id="Vyp-AY-h14"/>
-                        <segue destination="MgE-sb-ZZL" kind="presentation" identifier="setMyUrlSegue" id="Bvz-Gx-rZO"/>
+                        <segue destination="MgE-sb-ZZL" kind="presentation" identifier="setMyUrlSegue" animates="NO" id="Bvz-Gx-rZO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HhE-Az-XbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="hbw-vI-K5X">
+                    <connections>
+                        <action selector="endEdit:" destination="Ohl-ua-0E0" id="xA5-X1-S4z"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1916" y="1526"/>
         </scene>
-        <!--View Controller-->
+        <!--My Url View Controller-->
         <scene sceneID="1Al-Hu-0vH">
             <objects>
-                <viewController id="MgE-sb-ZZL" sceneMemberID="viewController">
+                <viewController id="MgE-sb-ZZL" customClass="MyUrlViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="V3t-eg-yPK"/>
                         <viewControllerLayoutGuide type="bottom" id="bSS-c9-8wR"/>
@@ -478,8 +488,38 @@
                     <view key="view" contentMode="scaleToFill" id="ITy-J1-UtD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JzP-tm-01z">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TC-pA-WDb">
+                                        <rect key="frame" x="528" y="20" width="52" height="32"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancel:" destination="MgE-sb-ZZL" eventType="touchUpInside" id="4Rf-fS-4c9"/>
+                                            <action selector="cancel:" destination="Ohl-ua-0E0" eventType="touchUpInside" id="MTo-Xk-AHi"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" red="0.27450980390000002" green="0.43529411759999997" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="8TC-pA-WDb" secondAttribute="trailing" constant="20" id="fPx-Xm-VXl"/>
+                                    <constraint firstItem="8TC-pA-WDb" firstAttribute="top" secondItem="JzP-tm-01z" secondAttribute="top" constant="20" id="rb8-r0-azR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JzP-tm-01z" firstAttribute="height" secondItem="ITy-J1-UtD" secondAttribute="height" multiplier="0.3" id="EBi-Nc-89f"/>
+                            <constraint firstAttribute="trailing" secondItem="JzP-tm-01z" secondAttribute="trailing" id="Qlo-0Z-eKT"/>
+                            <constraint firstItem="JzP-tm-01z" firstAttribute="leading" secondItem="ITy-J1-UtD" secondAttribute="leading" id="XBl-8B-feR"/>
+                            <constraint firstItem="JzP-tm-01z" firstAttribute="top" secondItem="ITy-J1-UtD" secondAttribute="top" id="Y8e-TX-whe"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epm-nE-GEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
