@@ -21,10 +21,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, TabBarPinProtocol 
     
     func update() {
         mapView.removeAnnotations(mapView.annotations)
-        let tabBarController: PinTabBarController = self.tabBarController as! PinTabBarController
         var annotations: Array<MKAnnotation> = Array<MKAnnotation>()
         
-        for user: User in tabBarController.users {
+        for user: User in ParseManager.sharedInstance.users {
             let lat = CLLocationDegrees(user.latitude)
             let long = CLLocationDegrees(user.longitude)
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)

@@ -8,18 +8,21 @@
 
 import Foundation
 
-typealias usersResult = (Array<User>) -> ()
+typealias usersResult = () -> ()
 
 class ParseManager {
     
     static let sharedInstance = ParseManager()
 
     var user: User!
+     var users: Array<User>!
     
     var isPostedLocation: Bool = false
     
     func loadStudentLocations(result: usersResult) {
-        let request = NSMutableURLRequest(URL: NSURL(string: UrlConstants.studentLocation)!)
+        let params = ["limit": 100, "order": "-updatedAt"]
+        let urlString = UrlConstants.studentLocation + escapedParameters(params)
+        let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         let session = NSURLSession.sharedSession()
@@ -30,19 +33,24 @@ class ParseManager {
             }
             do {
                 let responseDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! NSDictionary
-                var users: Array<User> = Array<User>()
-                let usersDictionary: Array<NSDictionary> = responseDictionary["results"] as! Array<NSDictionary>
-                for userDictionary: NSDictionary in usersDictionary {
-                    var user: User = User()
-                    user.mediaUrl = userDictionary[UserKeys.mediaURL] as! String
-                    user.mapString = userDictionary[UserKeys.mapString] as! String
-                    user.firstName = userDictionary[UserKeys.firstName] as! String
-                    user.lastName = userDictionary[UserKeys.lastName] as! String
-                    user.longitude = userDictionary[UserKeys.longitude] as! Double
-                    user.latitude = userDictionary[UserKeys.latitude] as! Double
-                    users.append(user)
+                self.users = Array<User>()
+                if let results = responseDictionary["results"] {
+                    let usersDictionary: Array<NSDictionary> = results as! Array<NSDictionary>
+                    for userDictionary: NSDictionary in usersDictionary {
+                        var user: User = User()
+                        user.mediaUrl = userDictionary[UserKeys.mediaURL] as! String
+                        user.mapString = userDictionary[UserKeys.mapString] as! String
+                        user.firstName = userDictionary[UserKeys.firstName] as! String
+                        user.lastName = userDictionary[UserKeys.lastName] as! String
+                        user.longitude = userDictionary[UserKeys.longitude] as! Double
+                        user.latitude = userDictionary[UserKeys.latitude] as! Double
+                        self.users.append(user)
+                    }
+                    result()
+                } else if let error = responseDictionary["error"] {
+                    print(error)
                 }
-                result(users)
+
 
             } catch let error as NSError {
                 print (error.description)
@@ -66,10 +74,10 @@ class ParseManager {
         request.HTTPBody = "{\"uniqueKey\": \"\(SessionManager.sharedInstance.userId))\", \"firstName\": \"\(user.firstName)\", \"lastName\": \"\(user.lastName)\",\"mapString\": \"\(user.mapString)\", \"mediaURL\": \"\(user.mediaUrl)\",\"latitude\": \(user.latitude), \"longitude\": \(user.longitude)}".dataUsingEncoding(NSUTF8StringEncoding)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
-            if error != nil { // Handle error…
+            if error != nil {
+                print(error?.description)
                 return
             }
-            print(NSString(data: data!, encoding: NSUTF8StringEncoding))
         }
         task.resume()
     }
@@ -91,6 +99,18 @@ class ParseManager {
             }
         }
         task.resume()
+    }
+    
+    //MARK: - Parameters
+    
+    func escapedParameters(parameters: [String : AnyObject]) -> String {
+        var urlVars = [String]()
+        for (key, value) in parameters {
+            let stringValue = "\(value)"
+            let escapedValue = stringValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+            urlVars += [key + "=" + "\(escapedValue!)"]
+        }
+        return (!urlVars.isEmpty ? "?" : "") + urlVars.joinWithSeparator("&")
     }
     
 }
