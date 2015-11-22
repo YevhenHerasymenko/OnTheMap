@@ -21,8 +21,3 @@ struct UrlConstants {
     static let usersUrl: String = "https://www.udacity.com/api/users/"
     //Parse
 }
-
-struct StringConstant {
-    static let locationHere = "Enter Your Location Here"
-    static let myUrlHere = "Enter a Link to Share Here"
-}
