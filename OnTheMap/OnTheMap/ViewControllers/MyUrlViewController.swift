@@ -16,6 +16,7 @@ class MyUrlViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     
     var textViewDelegate: MapTextViewDelegate!
+    var placemark: MKPlacemark!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,15 @@ class MyUrlViewController: UIViewController {
         submitButton.layer.cornerRadius = CGRectGetHeight(submitButton.frame)/4
         textViewDelegate = MapTextViewDelegate(placeholder: textView.text)
         textView.delegate = textViewDelegate
+        
+        var region = self.mapView.region
+        let placemarkRegion: CLCircularRegion = placemark.region as! CLCircularRegion
+        region.center = placemarkRegion.center
+        region.span.latitudeDelta /= 8.0
+        region.span.longitudeDelta /= 8.0
+        
+        mapView.setRegion(region, animated: false)
+        mapView.addAnnotation(placemark)
     }
     
     //MARK: - Actions

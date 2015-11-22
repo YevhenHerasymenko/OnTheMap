@@ -180,7 +180,7 @@
         <!--List-->
         <scene sceneID="eqN-iM-rRR">
             <objects>
-                <viewController id="A3r-uC-VMM" customClass="ListViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="A3r-uC-VMM" customClass="ListViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zbi-aH-t3g"/>
                         <viewControllerLayoutGuide type="bottom" id="5Ev-bd-B8Z"/>
@@ -552,7 +552,7 @@
                                     </button>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="0.1999313766891892" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="0.30188978040540543" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="jF9-oZ-Bsm" firstAttribute="centerY" secondItem="ibD-fr-AbI" secondAttribute="centerY" id="Dcb-AI-C1w"/>
                                     <constraint firstAttribute="trailing" secondItem="jF9-oZ-Bsm" secondAttribute="trailing" constant="100" id="RIG-9z-xri"/>

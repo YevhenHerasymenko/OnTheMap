@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class MyLocationViewController: UIViewController {
 
@@ -30,11 +31,33 @@ class MyLocationViewController: UIViewController {
     }
     
     @IBAction func findOnMap(sender: UIButton) {
-        self.performSegueWithIdentifier("setMyUrlSegue", sender: self)
+        let geocoder: CLGeocoder = CLGeocoder()
+        geocoder.geocodeAddressString(textView.text) { (placemarks, error) -> Void in
+            if (error != nil || placemarks?.count == 0) {
+                let alertController = UIAlertController(title: nil, message: "Could Not Geocode the String", preferredStyle: UIAlertControllerStyle.Alert)
+                let alertOkAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: nil)
+                alertController.addAction(alertOkAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+                
+            } else {
+                let topResult = placemarks![0]
+                let placemark = MKPlacemark(placemark: topResult)
+                self.performSegueWithIdentifier(SegueConstants.setMyUrlSegue, sender: placemark)
+            }
+        }
     }
     
     @IBAction func endEdit(sender: UITapGestureRecognizer) {
         view.endEditing(true)
+    }
+    
+    //MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SegueConstants.setMyUrlSegue {
+            let urlController: MyUrlViewController = segue.destinationViewController as! MyUrlViewController
+            urlController.placemark = sender as! MKPlacemark
+        }
     }
 
 }
