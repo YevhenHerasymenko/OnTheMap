@@ -8,28 +8,40 @@
 
 import UIKit
 
-class MyLocationViewController: UIViewController {
+class MyLocationViewController: UIViewController, UITextViewDelegate {
 
+    @IBOutlet weak var findButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        findButton.layer.masksToBounds = true
+        findButton.layer.cornerRadius = CGRectGetHeight(findButton.frame)/4
     }
     
+    //MARK: - Actions
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func cancel(sender: UIButton) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
-    */
-
+    
+    @IBAction func findOnMap(sender: UIButton) {
+        
+    }
+    
+    //MARK: - Text View Delegate
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        textView.textAlignment = NSTextAlignment.Left
+        if textView.text == StringConstant.locationHere {
+            textView.text = nil
+        }
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        textView.textAlignment = NSTextAlignment.Center
+        if textView.text.characters.count == 0 {
+            textView.text = StringConstant.locationHere
+        }
+    }
+    
 }

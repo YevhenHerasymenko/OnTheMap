@@ -12,6 +12,7 @@ import Foundation
 struct SegueConstants {
     static let loginSegue: String = "loginSegue"
     static let setLocationSegue: String = "setLocationSegue"
+    static let setMyUrlSegue: String = "setMyUrlSegue"
 }
 
 struct UrlConstants {
@@ -19,4 +20,8 @@ struct UrlConstants {
     static let sessionUrl: String = "https://www.udacity.com/api/session"
     static let usersUrl: String = "https://www.udacity.com/api/users/"
     //Parse
+}
+
+struct StringConstant {
+    static let locationHere = "Enter Your Location Here"
 }
