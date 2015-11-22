@@ -16,14 +16,18 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     //MARK: - Actions
 
-    @IBAction func endEditing(sender: UITapGestureRecognizer) {
+    @IBAction func endEditing(sender: UITapGestureRecognizer!) {
         view.endEditing(true)
     }
     @IBAction func login(sender: UIButton) {
+        endEditing(nil)
+        sender.enabled = false
+        
         if emailTextField.text?.characters.count == 0 || passwordTextField.text?.characters.count == 0 {
             showAlert("Email or password cannot be nil")
         } else {
             SessionManager.sharedInstance.login(emailTextField.text!, password: passwordTextField.text!, result: { (error) -> () in
+                sender.enabled = true
                 self.loginNavigation(error)
             })
         }
@@ -52,10 +56,12 @@ class LoginViewController: UIViewController {
     //MARK: - Navigation
     
     func loginNavigation(error: String!) {
-        if (error.characters.count != 0) {
-            showAlert(error)
-        } else {
-            performSegueWithIdentifier(SegueConstants.loginSegue, sender: self)
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            if (error.characters.count != 0) {
+                self.showAlert(error)
+            } else {
+                self.performSegueWithIdentifier(SegueConstants.loginSegue, sender: self)
+            }
         }
     }
     
