@@ -21,7 +21,7 @@ class MyLocationViewController: UIViewController, UITextViewDelegate {
     //MARK: - Actions
 
     @IBAction func cancel(sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
+        navigationController!.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func findOnMap(sender: UIButton) {

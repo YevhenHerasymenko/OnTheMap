@@ -296,12 +296,30 @@
                     <connections>
                         <segue destination="Xx2-3N-wYm" kind="relationship" relationship="viewControllers" id="Hfh-5c-47E"/>
                         <segue destination="A3r-uC-VMM" kind="relationship" relationship="viewControllers" id="Ddx-oH-VQq"/>
-                        <segue destination="Ohl-ua-0E0" kind="presentation" identifier="setLocationSegue" id="EaC-Wb-xGN"/>
+                        <segue destination="fnu-b6-8qc" kind="presentation" identifier="setLocationSegue" id="r9n-4Z-FCH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ums-ia-2f6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1060" y="375"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="p72-Gy-Si2">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="fnu-b6-8qc" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lRM-hU-cB2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ohl-ua-0E0" kind="relationship" relationship="rootViewController" id="6u1-XX-nUQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eYf-Mg-UeI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1060" y="1526"/>
         </scene>
         <!--My Location View Controller-->
         <scene sceneID="7xR-bp-07V">
@@ -340,9 +358,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6JA-Wy-ndN">
-                                        <rect key="frame" x="525" y="20" width="55" height="34"/>
+                                        <rect key="frame" x="528" y="20" width="52" height="32"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" red="0.050980392159999999" green="0.090196078430000007" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -374,7 +392,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="jkq-Pq-GOA"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="23"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
                                         <state key="normal" title="Find on the Map">
                                             <color key="titleColor" red="0.27450980390000002" green="0.43529411759999997" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -439,13 +457,34 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="kBc-ux-yn1"/>
                     <connections>
                         <outlet property="findButton" destination="2X7-8N-D62" id="Vyp-AY-h14"/>
+                        <segue destination="MgE-sb-ZZL" kind="presentation" identifier="setMyUrlSegue" id="Bvz-Gx-rZO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HhE-Az-XbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1060" y="1166"/>
+            <point key="canvasLocation" x="1916" y="1526"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1Al-Hu-0vH">
+            <objects>
+                <viewController id="MgE-sb-ZZL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V3t-eg-yPK"/>
+                        <viewControllerLayoutGuide type="bottom" id="bSS-c9-8wR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ITy-J1-UtD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="epm-nE-GEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2658" y="1526"/>
         </scene>
     </scenes>
     <resources>
