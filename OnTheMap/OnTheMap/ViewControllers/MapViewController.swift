@@ -12,12 +12,20 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate, TabBarPinProtocol {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var blockedInterfaceView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        startUpdate()
     }
     
     //MARK: - TabBar
+    
+    func startUpdate() {
+        blockedInterfaceView.hidden = false
+        activityIndicator.startAnimating()
+    }
     
     func update() {
         mapView.removeAnnotations(mapView.annotations)
@@ -34,7 +42,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, TabBarPinProtocol 
             annotations.append(annotation)
         }
         mapView.addAnnotations(annotations)
-        
+        blockedInterfaceView.hidden = true
+        activityIndicator.stopAnimating()
     }
     
     //MARK: - MapView

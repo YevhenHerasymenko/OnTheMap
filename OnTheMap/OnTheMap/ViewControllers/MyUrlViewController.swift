@@ -44,13 +44,38 @@ class MyUrlViewController: UIViewController {
     }
 
     @IBAction func submit(sender: UIButton) {
+        sender.enabled = false
         ParseManager.sharedInstance.user.mediaUrl = self.textView.text
-        ParseManager.sharedInstance.setUserLocation()
+        ParseManager.sharedInstance.setUserLocation { (error) -> () in
+            sender.enabled = true
+            self.mapNavigation(error)
+        }
         navigationController!.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func endEdit(sender: AnyObject) {
         view.endEditing(true)
+    }
+    
+    //MARK: - Navigation
+    
+    func mapNavigation(error: String!) {
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            if (error.characters.count != 0) {
+                self.showAlert(error)
+            } else {
+                self.navigationController!.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
+    }
+    
+    //MARK: - Alert
+    
+    func showAlert(title: String) {
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        let alertOkAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+        alertController.addAction(alertOkAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
 }

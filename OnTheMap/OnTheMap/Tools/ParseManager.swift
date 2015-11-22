@@ -9,6 +9,7 @@
 import Foundation
 
 typealias usersResult = () -> ()
+typealias postLocationResult = (String) -> ()
 
 class ParseManager {
     
@@ -54,7 +55,7 @@ class ParseManager {
     }
     
     
-    func setUserLocation() {
+    func setUserLocation(result: postLocationResult) {
         var urlString = UrlConstants.studentLocation
         if isPostedLocation {
             urlString += SessionManager.sharedInstance.userId
@@ -69,8 +70,10 @@ class ParseManager {
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
             if error != nil {
-                print(error?.description)
+                result((error?.description)!)
                 return
+            } else {
+                result("")
             }
         }
         task.resume()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TabBarPinProtocol {
+@objc protocol TabBarPinProtocol {
     func update()
 }
 
@@ -27,7 +27,9 @@ class PinTabBarController: UITabBarController {
         ParseManager.sharedInstance.loadStudentLocations { (users) -> () in
             for viewController in self.viewControllers! {
                 if let protocolObject: TabBarPinProtocol! = viewController as! TabBarPinProtocol {
-                    protocolObject.update()
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        protocolObject.update()
+                    })
                 }
             }
         }
@@ -57,6 +59,7 @@ class PinTabBarController: UITabBarController {
     }
     
     @IBAction func refreshPins(sender: UIBarButtonItem) {
+        (viewControllers![0] as! MapViewController).startUpdate()
         loadUsersData()
     }
 }
