@@ -24,4 +24,5 @@ struct UrlConstants {
 
 struct StringConstant {
     static let locationHere = "Enter Your Location Here"
+    static let myUrlHere = "Enter a Link to Share Here"
 }

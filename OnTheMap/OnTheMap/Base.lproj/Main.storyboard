@@ -426,9 +426,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="Ohl-ua-0E0" id="vIm-2H-jL3"/>
-                                        </connections>
                                     </textView>
                                 </subviews>
                                 <animations/>
@@ -467,6 +464,7 @@
                     <navigationItem key="navigationItem" id="kBc-ux-yn1"/>
                     <connections>
                         <outlet property="findButton" destination="2X7-8N-D62" id="Vyp-AY-h14"/>
+                        <outlet property="textView" destination="2dw-i7-gtc" id="TQL-Vu-ddE"/>
                         <segue destination="MgE-sb-ZZL" kind="show" identifier="setMyUrlSegue" animates="NO" id="Bvz-Gx-rZO"/>
                     </connections>
                 </viewController>
@@ -537,7 +535,7 @@
                                 <rect key="frame" x="0.0" y="480" width="600" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jF9-oZ-Bsm">
-                                        <rect key="frame" x="120" y="40" width="360" height="40"/>
+                                        <rect key="frame" x="100" y="40" width="400" height="40"/>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -557,8 +555,8 @@
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="0.1999313766891892" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="jF9-oZ-Bsm" firstAttribute="centerY" secondItem="ibD-fr-AbI" secondAttribute="centerY" id="Dcb-AI-C1w"/>
-                                    <constraint firstAttribute="trailing" secondItem="jF9-oZ-Bsm" secondAttribute="trailing" constant="120" id="RIG-9z-xri"/>
-                                    <constraint firstItem="jF9-oZ-Bsm" firstAttribute="leading" secondItem="ibD-fr-AbI" secondAttribute="leading" constant="120" id="keC-7Y-ODJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="jF9-oZ-Bsm" secondAttribute="trailing" constant="100" id="RIG-9z-xri"/>
+                                    <constraint firstItem="jF9-oZ-Bsm" firstAttribute="leading" secondItem="ibD-fr-AbI" secondAttribute="leading" constant="100" id="keC-7Y-ODJ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -581,6 +579,8 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="z9P-hm-Jdd" id="S6E-G6-KnY"/>
+                        <outlet property="submitButton" destination="jF9-oZ-Bsm" id="plI-4n-XlV"/>
+                        <outlet property="textView" destination="h0y-vc-F6T" id="URK-Mx-gNO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epm-nE-GEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

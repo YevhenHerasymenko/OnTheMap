@@ -9,14 +9,20 @@
 import UIKit
 import MapKit
 
-class MyUrlViewController: UIViewController, UITextViewDelegate {
+class MyUrlViewController: UIViewController {
 
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var textView: UITextView!
+    
+    var textViewDelegate: MapTextViewDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        submitButton.layer.masksToBounds = true
+        submitButton.layer.cornerRadius = CGRectGetHeight(submitButton.frame)/4
+        textViewDelegate = MapTextViewDelegate(placeholder: textView.text)
+        textView.delegate = textViewDelegate
     }
     
     //MARK: - Actions

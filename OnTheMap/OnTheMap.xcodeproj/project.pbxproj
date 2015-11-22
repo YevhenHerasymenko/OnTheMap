@@ -25,6 +25,7 @@
 		C4C64DA61C00E88E000D9D54 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C64DA51C00E88E000D9D54 /* ParseManager.swift */; };
 		C4C64DA81C00F177000D9D54 /* MyLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C64DA71C00F177000D9D54 /* MyLocationViewController.swift */; };
 		C4C64DAA1C01C459000D9D54 /* MyUrlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C64DA91C01C459000D9D54 /* MyUrlViewController.swift */; };
+		C4C64DAC1C01CB84000D9D54 /* MapTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C64DAB1C01CB84000D9D54 /* MapTextViewDelegate.swift */; };
 		C4DC10511BFCF693002128A7 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4DC104E1BFCF693002128A7 /* Roboto-Medium.ttf */; };
 		C4DC10521BFCF693002128A7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4DC104F1BFCF693002128A7 /* Roboto-Regular.ttf */; };
 		C4DC10531BFCF693002128A7 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4DC10501BFCF693002128A7 /* Roboto-Thin.ttf */; };
@@ -72,6 +73,7 @@
 		C4C64DA51C00E88E000D9D54 /* ParseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseManager.swift; sourceTree = "<group>"; };
 		C4C64DA71C00F177000D9D54 /* MyLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLocationViewController.swift; sourceTree = "<group>"; };
 		C4C64DA91C01C459000D9D54 /* MyUrlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUrlViewController.swift; sourceTree = "<group>"; };
+		C4C64DAB1C01CB84000D9D54 /* MapTextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTextViewDelegate.swift; sourceTree = "<group>"; };
 		C4DC104E1BFCF693002128A7 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		C4DC104F1BFCF693002128A7 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		C4DC10501BFCF693002128A7 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			children = (
 				C4C64D991C007A0B000D9D54 /* SessionManager.swift */,
 				C4C64DA51C00E88E000D9D54 /* ParseManager.swift */,
+				C4C64DAB1C01CB84000D9D54 /* MapTextViewDelegate.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				7472DD441BFDCF45000B2D15 /* LoginViewController.swift in Sources */,
 				7472DD451BFDCF45000B2D15 /* PaddingTextField.swift in Sources */,
 				C4C64DA81C00F177000D9D54 /* MyLocationViewController.swift in Sources */,
+				C4C64DAC1C01CB84000D9D54 /* MapTextViewDelegate.swift in Sources */,
 				C4C64DA41C0090CC000D9D54 /* PinTabBarController.swift in Sources */,
 				C4C64DA61C00E88E000D9D54 /* ParseManager.swift in Sources */,
 				C4C64D9A1C007A0B000D9D54 /* SessionManager.swift in Sources */,

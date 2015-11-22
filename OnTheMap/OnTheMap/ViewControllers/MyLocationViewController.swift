@@ -8,14 +8,19 @@
 
 import UIKit
 
-class MyLocationViewController: UIViewController, UITextViewDelegate {
+class MyLocationViewController: UIViewController {
 
     @IBOutlet weak var findButton: UIButton!
+    @IBOutlet weak var textView: UITextView!
+    
+    var textViewDelegate: MapTextViewDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         findButton.layer.masksToBounds = true
         findButton.layer.cornerRadius = CGRectGetHeight(findButton.frame)/4
+        textViewDelegate = MapTextViewDelegate(placeholder: textView.text)
+        textView.delegate = textViewDelegate
     }
     
     //MARK: - Actions
@@ -31,27 +36,5 @@ class MyLocationViewController: UIViewController, UITextViewDelegate {
     @IBAction func endEdit(sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
-    //MARK: - Text View Delegate
-    
-    func textViewDidBeginEditing(textView: UITextView) {
-        textView.textAlignment = NSTextAlignment.Left
-        if textView.text == StringConstant.locationHere {
-            textView.text = nil
-        }
-    }
-    
-    func textViewDidEndEditing(textView: UITextView) {
-        textView.textAlignment = NSTextAlignment.Center
-        if textView.text.characters.count == 0 {
-            textView.text = StringConstant.locationHere
-        }
-    }
-    
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
-            textView.canResignFirstResponder()
-        }
-        return true
-    }
-    
+
 }
