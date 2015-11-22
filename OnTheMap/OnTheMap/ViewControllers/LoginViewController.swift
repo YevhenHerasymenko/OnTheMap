@@ -25,6 +25,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if emailTextField.text?.characters.count == 0 || passwordTextField.text?.characters.count == 0 {
             showAlert("Email or password cannot be nil")
+            sender.enabled = true
         } else {
             SessionManager.sharedInstance.login(emailTextField.text!, password: passwordTextField.text!, result: { (error) -> () in
                 sender.enabled = true

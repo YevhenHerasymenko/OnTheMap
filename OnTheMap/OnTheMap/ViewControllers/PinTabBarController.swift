@@ -13,7 +13,6 @@ protocol TabBarPinProtocol {
 }
 
 class PinTabBarController: UITabBarController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadUsersData()
@@ -25,7 +24,7 @@ class PinTabBarController: UITabBarController {
     }
     
     func loadUsersData() {
-        ParseManager.sharedInstance.loadStudentLocations { () -> () in
+        ParseManager.sharedInstance.loadStudentLocations { (users) -> () in
             for viewController in self.viewControllers! {
                 if let protocolObject: TabBarPinProtocol! = viewController as! TabBarPinProtocol {
                     protocolObject.update()

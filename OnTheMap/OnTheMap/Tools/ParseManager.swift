@@ -15,7 +15,7 @@ class ParseManager {
     static let sharedInstance = ParseManager()
 
     var user: User!
-     var users: Array<User>!
+    var users: Array<User>!
     
     var isPostedLocation: Bool = false
     
@@ -37,13 +37,7 @@ class ParseManager {
                 if let results = responseDictionary["results"] {
                     let usersDictionary: Array<NSDictionary> = results as! Array<NSDictionary>
                     for userDictionary: NSDictionary in usersDictionary {
-                        var user: User = User()
-                        user.mediaUrl = userDictionary[UserKeys.mediaURL] as! String
-                        user.mapString = userDictionary[UserKeys.mapString] as! String
-                        user.firstName = userDictionary[UserKeys.firstName] as! String
-                        user.lastName = userDictionary[UserKeys.lastName] as! String
-                        user.longitude = userDictionary[UserKeys.longitude] as! Double
-                        user.latitude = userDictionary[UserKeys.latitude] as! Double
+                        let user: User = User(dictionaty: userDictionary)
                         self.users.append(user)
                     }
                     result()

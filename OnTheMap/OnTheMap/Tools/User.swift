@@ -16,4 +16,15 @@ struct User {
     var latitude: Double!
     var mapString: String!
     var mediaUrl: String!
+    
+    init() { }
+    
+    init(dictionaty: NSDictionary) {
+        mediaUrl = dictionaty[UserKeys.mediaURL] as! String
+        mapString = dictionaty[UserKeys.mapString] as! String
+        firstName = dictionaty[UserKeys.firstName] as! String
+        lastName = dictionaty[UserKeys.lastName] as! String
+        longitude = dictionaty[UserKeys.longitude] as! Double
+        latitude = dictionaty[UserKeys.latitude] as! Double
+    }
 }
