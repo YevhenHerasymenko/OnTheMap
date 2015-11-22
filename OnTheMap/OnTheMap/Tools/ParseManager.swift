@@ -16,6 +16,8 @@ class ParseManager {
 
     var user: User!
     
+    var isPostedLocation: Bool = false
+    
     func loadStudentLocations(result: usersResult) {
         let request = NSMutableURLRequest(URL: NSURL(string: UrlConstants.studentLocation)!)
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
@@ -50,21 +52,43 @@ class ParseManager {
     }
     
     
-    func setUserLocation(update: Bool) {
-        let urlString = "https://api.parse.com/1/classes/StudentLocation/8ZExGR5uX8"
+    func setUserLocation() {
+        var urlString = UrlConstants.studentLocation
+        if isPostedLocation {
+            urlString += SessionManager.sharedInstance.userId
+        }
         let url = NSURL(string: urlString)
         let request = NSMutableURLRequest(URL: url!)
-        request.HTTPMethod = update ? "PUT" : "POST"
+        request.HTTPMethod = isPostedLocation ? "PUT" : "POST"
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.HTTPBody = "{\"uniqueKey\": \"1234\", \"firstName\": \"John\", \"lastName\": \"Doe\",\"mapString\": \"Cupertino, CA\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 37.322998, \"longitude\": -122.032182}".dataUsingEncoding(NSUTF8StringEncoding)
+        request.HTTPBody = "{\"uniqueKey\": \"\(SessionManager.sharedInstance.userId))\", \"firstName\": \"\(user.firstName)\", \"lastName\": \"\(user.lastName)\",\"mapString\": \"\(user.mapString)\", \"mediaURL\": \"\(user.mediaUrl)\",\"latitude\": \(user.latitude), \"longitude\": \(user.longitude)}".dataUsingEncoding(NSUTF8StringEncoding)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
             if error != nil { // Handle error…
                 return
             }
             print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+        }
+        task.resume()
+    }
+    
+    func findUserLocation() {
+        let urlString = "https://api.parse.com/1/classes/StudentLocation?where=%7B%22uniqueKey%22%3A%22\(SessionManager.sharedInstance.userId)%22%7D"
+        let url = NSURL(string: urlString)
+        let request = NSMutableURLRequest(URL: url!)
+        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            if error != nil { /* Handle error */ return }
+            do {
+                let responseDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! NSDictionary
+                self.isPostedLocation = (responseDictionary["results"] != nil)
+            } catch let error as NSError {
+                print (error.description)
+            }
         }
         task.resume()
     }

@@ -27,6 +27,8 @@ class MyUrlViewController: UIViewController {
         
         var region = self.mapView.region
         let placemarkRegion: CLCircularRegion = placemark.region as! CLCircularRegion
+        ParseManager.sharedInstance.user.latitude = placemark.coordinate.latitude
+        ParseManager.sharedInstance.user.longitude = placemark.coordinate.longitude
         region.center = placemarkRegion.center
         region.span.latitudeDelta /= 8.0
         region.span.longitudeDelta /= 8.0
@@ -42,6 +44,8 @@ class MyUrlViewController: UIViewController {
     }
 
     @IBAction func submit(sender: UIButton) {
+        ParseManager.sharedInstance.user.mediaUrl = self.textView.text
+        ParseManager.sharedInstance.setUserLocation()
         navigationController!.dismissViewControllerAnimated(true, completion: nil)
     }
     

@@ -77,7 +77,11 @@ class SessionManager {
             
             do {
                 let responseDictionary = try NSJSONSerialization.JSONObjectWithData(newData, options: []) as! NSDictionary
-                print(responseDictionary)
+                let userDictionary = responseDictionary["user"] as! NSDictionary
+                var user = User()
+                user.firstName = userDictionary["first_name"] as! String
+                user.lastName = userDictionary["last_name"] as! String
+                ParseManager.sharedInstance.user = user
                 
             } catch _ as NSError { }
         }

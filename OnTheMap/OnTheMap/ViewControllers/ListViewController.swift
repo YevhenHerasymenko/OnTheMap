@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController, TabBarPinProtocol {
+class ListViewController: UIViewController, TabBarPinProtocol, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -26,4 +26,33 @@ class ListViewController: UIViewController, TabBarPinProtocol {
         }
     }
 
+    //MARK: - TableVIew
+    
+    //MARK: DataSource
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let tabBarController: PinTabBarController = self.tabBarController as! PinTabBarController
+        let user: User = tabBarController.users[indexPath.row]
+        
+        cell.imageView?.image = UIImage(named: "pin")
+        cell.textLabel?.text = "\(user.firstName) \(user.lastName)"
+        cell.detailTextLabel?.text = user.mediaUrl
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let tabBarController: PinTabBarController = self.tabBarController as! PinTabBarController
+        return tabBarController.users.count
+    }
+    
+    //MARK: Delegate
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let tabBarController: PinTabBarController = self.tabBarController as! PinTabBarController
+        let user: User = tabBarController.users[indexPath.row]
+        let app = UIApplication.sharedApplication()
+        app.openURL(NSURL(string: user.mediaUrl)!)
+    }
 }

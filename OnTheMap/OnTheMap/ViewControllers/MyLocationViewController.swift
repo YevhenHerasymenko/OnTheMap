@@ -42,6 +42,7 @@ class MyLocationViewController: UIViewController {
             } else {
                 let topResult = placemarks![0]
                 let placemark = MKPlacemark(placemark: topResult)
+                ParseManager.sharedInstance.user.mapString = self.textView.text
                 self.performSegueWithIdentifier(SegueConstants.setMyUrlSegue, sender: placemark)
             }
         }
