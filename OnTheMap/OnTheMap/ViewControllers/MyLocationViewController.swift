@@ -35,16 +35,14 @@ class MyLocationViewController: UIViewController {
     @IBAction func findOnMap(sender: UIButton) {
         blockedInterfaceView.hidden = false
         activityIndicator.startAnimating()
+        sender.enabled = false
         let geocoder: CLGeocoder = CLGeocoder()
         geocoder.geocodeAddressString(textView.text) { (placemarks, error) -> Void in
             self.blockedInterfaceView.hidden = true
             self.activityIndicator.stopAnimating()
+            sender.enabled = true
             if (error != nil || placemarks?.count == 0) {
-                let alertController = UIAlertController(title: nil, message: "Could Not Geocode the String", preferredStyle: UIAlertControllerStyle.Alert)
-                let alertOkAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: nil)
-                alertController.addAction(alertOkAction)
-                self.presentViewController(alertController, animated: true, completion: nil)
-                
+                self.alertErrorFindLocation()
             } else {
                 let topResult = placemarks![0]
                 let placemark = MKPlacemark(placemark: topResult)
@@ -56,6 +54,15 @@ class MyLocationViewController: UIViewController {
     
     @IBAction func endEdit(sender: UITapGestureRecognizer) {
         view.endEditing(true)
+    }
+    
+    //MARK: - ALert
+    
+    func alertErrorFindLocation() {
+        let alertController = UIAlertController(title: nil, message: "Could Not Geocode the String", preferredStyle: UIAlertControllerStyle.Alert)
+        let alertOkAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: nil)
+        alertController.addAction(alertOkAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     //MARK: - Navigation
