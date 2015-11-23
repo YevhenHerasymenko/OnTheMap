@@ -13,6 +13,8 @@ class MyLocationViewController: UIViewController {
 
     @IBOutlet weak var findButton: UIButton!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var blockedInterfaceView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var textViewDelegate: MapTextViewDelegate!
     
@@ -31,8 +33,12 @@ class MyLocationViewController: UIViewController {
     }
     
     @IBAction func findOnMap(sender: UIButton) {
+        blockedInterfaceView.hidden = false
+        activityIndicator.startAnimating()
         let geocoder: CLGeocoder = CLGeocoder()
         geocoder.geocodeAddressString(textView.text) { (placemarks, error) -> Void in
+            self.blockedInterfaceView.hidden = true
+            self.activityIndicator.stopAnimating()
             if (error != nil || placemarks?.count == 0) {
                 let alertController = UIAlertController(title: nil, message: "Could Not Geocode the String", preferredStyle: UIAlertControllerStyle.Alert)
                 let alertOkAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: nil)

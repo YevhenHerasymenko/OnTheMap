@@ -8,9 +8,6 @@
 
 import Foundation
 
-typealias usersResult = () -> ()
-typealias postLocationResult = (String) -> ()
-
 class ParseManager {
     
     static let sharedInstance = ParseManager()
@@ -20,16 +17,16 @@ class ParseManager {
     
     var isPostedLocation: Bool = false
     
-    func loadStudentLocations(result: usersResult) {
+    func loadStudentLocations(result: usersResult, error: errorResult) {
         let params = ["limit": 100, "order": "-updatedAt"]
         let urlString = UrlConstants.studentLocation + escapedParameters(params)
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request) { data, response, error in
-            if error != nil {
-                print (error?.description)
+        let task = session.dataTaskWithRequest(request) { data, response, errorResponse in
+            if errorResponse != nil {
+                error(errorResponse!.description)
                 return
             }
             do {
@@ -42,8 +39,8 @@ class ParseManager {
                         self.users.append(user)
                     }
                     result()
-                } else if let error = responseDictionary["error"] {
-                    print(error)
+                } else if let errorString = responseDictionary["error"] {
+                    error(errorString as! String)
                 }
 
 
@@ -55,7 +52,7 @@ class ParseManager {
     }
     
     
-    func setUserLocation(result: postLocationResult) {
+    func setUserLocation(result: errorResult) {
         var urlString = UrlConstants.studentLocation
         if isPostedLocation {
             urlString += SessionManager.sharedInstance.userId

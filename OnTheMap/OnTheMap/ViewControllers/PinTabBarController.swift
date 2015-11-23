@@ -24,13 +24,22 @@ class PinTabBarController: UITabBarController {
     }
     
     func loadUsersData() {
-        ParseManager.sharedInstance.loadStudentLocations { (users) -> () in
-            for viewController in self.viewControllers! {
-                if let protocolObject: TabBarPinProtocol! = viewController as! TabBarPinProtocol {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        protocolObject.update()
-                    })
-                }
+        ParseManager.sharedInstance.loadStudentLocations({ () -> () in
+            self.update()
+            }) { (error) -> () in
+                let alertController = UIAlertController(title: error, message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                let alertOkAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+                alertController.addAction(alertOkAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    func update() {
+        for viewController in viewControllers! {
+            if let protocolObject: TabBarPinProtocol! = viewController as! TabBarPinProtocol {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    protocolObject.update()
+                })
             }
         }
     }

@@ -8,8 +8,6 @@
 
 import UIKit
 
-typealias loginServerResult = (String) -> ()
-
 class SessionManager {
     
     static let sharedInstance = SessionManager()
@@ -19,15 +17,15 @@ class SessionManager {
     
     //MARK: - Login
     
-    func login(email: String, password: String, result: loginServerResult) {
+    func login(email: String, password: String, result: errorResult) {
         loginRequest(loginHttpBody(email, password: password), result: result)
     }
     
-    func login(facebookToken: String, result: loginServerResult) {
+    func login(facebookToken: String, result: errorResult) {
         loginRequest(loginHttpBody(facebookToken), result:  result)
     }
     
-    func loginRequest(httpBody: String, result: loginServerResult) {
+    func loginRequest(httpBody: String, result: errorResult) {
         let request = NSMutableURLRequest(URL: NSURL(string: UrlConstants.sessionUrl)!)
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")

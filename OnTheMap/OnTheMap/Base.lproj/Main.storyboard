@@ -503,10 +503,26 @@
                                     <constraint firstAttribute="trailing" secondItem="2dw-i7-gtc" secondAttribute="trailing" constant="20" id="zoi-01-bKh"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P0d-F0-qfj">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="LVA-rz-4bQ">
+                                        <rect key="frame" x="290" y="230" width="20" height="20"/>
+                                        <animations/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="LVA-rz-4bQ" firstAttribute="centerY" secondItem="P0d-F0-qfj" secondAttribute="centerY" id="zEC-he-qHA"/>
+                                    <constraint firstItem="LVA-rz-4bQ" firstAttribute="centerX" secondItem="P0d-F0-qfj" secondAttribute="centerX" id="zFv-Nk-1Id"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="P0d-F0-qfj" secondAttribute="trailing" constant="-20" id="1H1-dK-YCc"/>
                             <constraint firstItem="GKt-Nn-LzO" firstAttribute="top" secondItem="KZR-Df-kma" secondAttribute="bottom" id="4rQ-fg-M5T"/>
                             <constraint firstAttribute="trailing" secondItem="Dfz-p6-ojp" secondAttribute="trailing" id="ChL-qq-iOc"/>
                             <constraint firstAttribute="trailing" secondItem="f0k-a0-ebV" secondAttribute="trailing" id="G95-o5-l4P"/>
@@ -515,8 +531,11 @@
                             <constraint firstItem="Dfz-p6-ojp" firstAttribute="top" secondItem="GKt-Nn-LzO" secondAttribute="bottom" id="Lmr-dV-g4x"/>
                             <constraint firstItem="aXD-FY-2rg" firstAttribute="top" secondItem="f0k-a0-ebV" secondAttribute="bottom" id="QhF-rc-DDF"/>
                             <constraint firstItem="Dfz-p6-ojp" firstAttribute="leading" secondItem="sJ6-bn-lHo" secondAttribute="leading" id="UCH-HW-dMQ"/>
+                            <constraint firstItem="P0d-F0-qfj" firstAttribute="leading" secondItem="sJ6-bn-lHo" secondAttribute="leadingMargin" constant="-20" id="Uis-7S-mGu"/>
+                            <constraint firstItem="P0d-F0-qfj" firstAttribute="top" secondItem="sJ6-bn-lHo" secondAttribute="topMargin" id="Xja-YK-jYr"/>
                             <constraint firstItem="f0k-a0-ebV" firstAttribute="height" secondItem="sJ6-bn-lHo" secondAttribute="height" multiplier="0.2" id="iWO-8s-f2v"/>
                             <constraint firstItem="GKt-Nn-LzO" firstAttribute="leading" secondItem="sJ6-bn-lHo" secondAttribute="leading" id="jua-yY-mtM"/>
+                            <constraint firstItem="P0d-F0-qfj" firstAttribute="height" secondItem="sJ6-bn-lHo" secondAttribute="height" multiplier="0.8" id="s8w-2y-3gM"/>
                             <constraint firstItem="GKt-Nn-LzO" firstAttribute="top" secondItem="sJ6-bn-lHo" secondAttribute="topMargin" id="vjh-Cw-AA7"/>
                             <constraint firstItem="f0k-a0-ebV" firstAttribute="leading" secondItem="sJ6-bn-lHo" secondAttribute="leading" id="y2e-dl-XxM"/>
                             <constraint firstItem="f0k-a0-ebV" firstAttribute="top" secondItem="Dfz-p6-ojp" secondAttribute="bottom" id="zX0-EQ-Jl9"/>
@@ -529,6 +548,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="kBc-ux-yn1"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="LVA-rz-4bQ" id="B5Q-BR-U2o"/>
+                        <outlet property="blockedInterfaceView" destination="P0d-F0-qfj" id="77Y-Sm-8CD"/>
                         <outlet property="findButton" destination="2X7-8N-D62" id="Vyp-AY-h14"/>
                         <outlet property="textView" destination="2dw-i7-gtc" id="TQL-Vu-ddE"/>
                         <segue destination="MgE-sb-ZZL" kind="show" identifier="setMyUrlSegue" animates="NO" id="Bvz-Gx-rZO"/>

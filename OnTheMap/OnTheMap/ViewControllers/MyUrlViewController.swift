@@ -50,7 +50,6 @@ class MyUrlViewController: UIViewController {
             sender.enabled = true
             self.mapNavigation(error)
         }
-        navigationController!.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func endEdit(sender: AnyObject) {

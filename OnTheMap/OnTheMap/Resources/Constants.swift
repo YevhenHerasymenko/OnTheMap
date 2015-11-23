@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias usersResult = () -> ()
+typealias errorResult = (String) -> ()
 
 struct SegueConstants {
     static let loginSegue = "loginSegue"
